@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>House Auto Control Demo</title>
+		<link href="houseCtr.css" type="text/css" rel="stylesheet" />
+	</head>
+
+	<button type="button" class="control" onclick="lightsControl()">
+		light control
+	</button>
+
+
+	<label id="on_off" font-size> 
+		off
+	</label>
+
+	<script>
+		var lights = false;
+		function lightsControl(){
+			lights = !lights;
+			var msg = document.getElementById("on_off");
+			if(lights){
+				msg.innerHTML = "on";
+			}
+			else{
+				msg.innerHTML = "off";
+			}
+			
+		}
+	</script>
+</html>

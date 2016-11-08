@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>House Auto Control Demo</title>
+	</head>
+<body>
+	<h1><a href="http://www.instructables.com/id/Raspberry-Pi-GPIO-home-automation/">
+	reference</a>
+	</h1>
+
+	<button type="button" id="lightPosition" class="control" onclick="lightsControl()">
+	</button>
+
+
+	<label id="on_off" font-size> 
+		off
+	</label>
+
+	<label id="ip">jj</label>
+
+</body>
+	<script src="/socket.io/socket.io.js"></script>
+
+	<script>
+		var socket = io();
+		var ip = document.getElementById("ip");
+		socket.on('host add', function(data){
+			ip.innerHTML = data;
+		});
+
+		var lights = false;
+		function lightsControl(){
+			lights = !lights;
+			var msg = document.getElementById("on_off");
+			if(lights){
+				msg.innerHTML = "on";
+			}
+			else{
+				msg.innerHTML = "off";
+			}
+			socket.emit('lights', msg.innerHTML);
+			return msg;
+		}
+
+
+	</script>
+</html>

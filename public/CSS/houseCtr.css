@@ -1,0 +1,34 @@
+body{
+    background-image: url("../img/main.jpg");
+    margin:0px;
+}
+
+.control{
+    background-image:url('../img/logo.jpg');
+    background-size: 120%;
+/*    background-repeat: no-repeat;*/
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 12px;
+    margin: 4px 2px;
+    height: 50px;
+    width: 50px;
+    border-radius: 50%;
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.control:hover {
+    background-color: #555555;
+    color: white;
+}
+
+#lightPosition{
+    position: relative;
+    margin-top: 80px;
+    margin-left: 500px;
+
+}
