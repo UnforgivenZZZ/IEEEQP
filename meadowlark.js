@@ -94,7 +94,10 @@ var io = require('socket.io').listen(app.listen(app.get('port'), ip, function(){
 	console.log('started on http://'+ip+':'+ app.get('port')+';ctr-c to terminate');
 
 }));
+
+
 var timer;
+var is_connected = false;
 //random data
 function send_duration(){
 	var randomFortune = 
@@ -111,15 +114,21 @@ var a = 1;
 io.sockets.on('connection', function (socket) {
    console.log('connected '+a);
    a++; 
+   is_connected = true;
    socket.emit('host add', getVisitIP());
 
    socket.on('lights', function(msg){
    		console.log(msg);
    });
 
-   timer = setInterval(send_duration,500);
+   if(is_connected){
+   		timer = setInterval(send_duration,500);
+   	}
 
    socket.on('disconnect', function(){
+   	is_connected = false;
+   	clearInterval(timer); // Clear interval
+    timer=0;
    	console.log('disconnected');
    });
 });
