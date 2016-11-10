@@ -11,21 +11,38 @@
 	<button type="button" id="lightPosition" class="control" onclick="lightsControl()">
 	</button>
 
-
 	<label id="on_off" font-size> 
 		off
 	</label>
 
 	<label id="ip">jj</label>
 
+	<button type="button" id="ACPosition" class="control" onclick="ACControl()">
+	</button>
+	<label id="ac" font-size>off</label>
+
+	<label id="temnp" font-seize></label>
+
+
 </body>
 	<script src="/socket.io/socket.io.js"></script>
 
 	<script>
+		var light_sta = document.getElementById("lightPosition");
+		light_sta.style.backgroundImage = "url('/img/off.jpg')";
+
+		var ac_sta = document.getElementById("ACPosition");
+		ac_sta.style.backgroundImage = "url('/img/off.jpg')";
+
 		var socket = io();
 		var ip = document.getElementById("ip");
 		socket.on('host add', function(data){
 			ip.innerHTML = data;
+		});
+
+		var temp = document.getElementById("temnp");
+		socket.on('temp',function(data){
+			temp.innerHTML = data;
 		});
 
 		var lights = false;
@@ -34,14 +51,47 @@
 			var msg = document.getElementById("on_off");
 			if(lights){
 				msg.innerHTML = "on";
+				light_sta.style.backgroundImage = "url('/img/on.jpg')";
 			}
 			else{
 				msg.innerHTML = "off";
+				light_sta.style.backgroundImage = "url('/img/off.jpg')";
+
 			}
-			socket.emit('lights', msg.innerHTML);
+			socket.emit('lights', "light "+msg.innerHTML);
+			return msg;
+		}
+
+		var ac = false;
+		function ACControl(){
+			ac = !ac;
+			var msg = document.getElementById("ac");
+			if(ac){
+				msg.innerHTML = "on";
+				ac_sta.style.backgroundImage = "url('/img/on.jpg')";
+			}
+			else{
+				msg.innerHTML = "off";
+				ac_sta.style.backgroundImage = "url('/img/off.jpg')";
+
+			}
+			socket.emit('lights', "AC "+msg.innerHTML);
 			return msg;
 		}
 
 
 	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
 </html>

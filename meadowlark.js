@@ -94,6 +94,17 @@ var io = require('socket.io').listen(app.listen(app.get('port'), ip, function(){
 	console.log('started on http://'+ip+':'+ app.get('port')+';ctr-c to terminate');
 
 }));
+var timer;
+//random data
+function send_duration(){
+	var randomFortune = 
+	fortunes[Math.floor(Math.random() * fortunes.length)];
+	io.sockets.emit('temp',randomFortune);
+
+    console.log(randomFortune);
+	return randomFortune;
+}
+
 
 //data communication between server and client
 var a = 1;
@@ -103,13 +114,17 @@ io.sockets.on('connection', function (socket) {
    socket.emit('host add', getVisitIP());
 
    socket.on('lights', function(msg){
-   		console.log('lights '+msg);
+   		console.log(msg);
    });
+
+   timer = setInterval(send_duration,500);
 
    socket.on('disconnect', function(){
    	console.log('disconnected');
    });
 });
+
+
 
 
 
