@@ -7,7 +7,7 @@
     position:fixed;
     border: 3px;
     width: 350px;
-    right: 400px;
+    left: 180px;
     top: 107px;
     margin-top: 30px;
     height: 300px;
@@ -33,6 +33,20 @@
     color: white;
 }
 
+.dateInfo{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.4);
+    left: 780px;
+    top: 107px;
+    height: 350px;
+    width: 350px;
+    margin-top: 30px;
+}
+
+#temperatureLabel{
+    text-align: center;
+    text-decoration-color: red;
+}
 #lightPosition{
     position: relative;
     margin-top: 60px;
