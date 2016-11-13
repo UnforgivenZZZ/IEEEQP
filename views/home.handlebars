@@ -3,11 +3,11 @@
 	<head>
 		<title>House Auto Control Demo</title>
 	</head>
-<body>
+<body class="controlPage">
 	<h1><a href="http://www.instructables.com/id/Raspberry-Pi-GPIO-home-automation/">
 	reference</a>
 	</h1>
-
+<div class="controlPanel">
 	<button type="button" id="lightPosition" class="control" onclick="lightsControl()">
 	</button>
 
@@ -22,7 +22,7 @@
 	<label id="ac" font-size>off</label>
 
 	<label id="temnp" font-seize></label>
-
+</div>
 
 </body>
 	<script src="/socket.io/socket.io.js"></script>

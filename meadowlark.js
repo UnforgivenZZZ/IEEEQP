@@ -121,9 +121,9 @@ io.sockets.on('connection', function (socket) {
    		console.log(msg);
    });
 
-   if(is_connected){
-   		timer = setInterval(send_duration,500);
-   	}
+   
+   timer = setInterval(send_duration,500);
+   	
 
    socket.on('disconnect', function(){
    	is_connected = false;

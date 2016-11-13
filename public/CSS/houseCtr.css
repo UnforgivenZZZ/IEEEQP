@@ -1,4 +1,17 @@
+.controlPage{
+    background-image: url("/img/back.jpg");
+}
 
+.controlPanel{
+    background-color: rgba(255, 255, 255, 0.4);
+    position:fixed;
+    border: 3px;
+    width: 350px;
+    right: 400px;
+    top: 107px;
+    margin-top: 30px;
+    height: 300px;
+}
 .control{
     background-size: 99.999%;
     color: white;
@@ -22,12 +35,16 @@
 
 #lightPosition{
     position: relative;
-    margin-top: 80px;
-    margin-left: 500px;
+    margin-top: 60px;
+    margin-left: 20px;
 
 }
 #ACPosition{
     position: relative;
-    margin-top: 80px;
-    margin-left: 500px;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+#on_off{
+    position: relative;
+    margin-left: 70px;
 }
