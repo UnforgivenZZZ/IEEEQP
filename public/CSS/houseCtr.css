@@ -1,3 +1,4 @@
+
 .controlPage{
     background-image: url("/img/back.jpg");
 }
@@ -31,6 +32,12 @@
 .control:hover {
     background-color: #555555;
     color: white;
+}
+.ACPanel{
+    position: absolute;
+    width:350px;
+    bottom: 0px;
+    height: 150px;
 }
 
 .dateInfo{
