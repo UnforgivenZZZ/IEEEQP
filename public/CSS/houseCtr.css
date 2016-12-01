@@ -69,3 +69,28 @@
     position: relative;
     margin-left: 70px;
 }
+#ac{
+    position: relative;
+    margin-left: 70px;
+}
+#temnp{
+    position: relative;
+    display: block;
+    text-align: center;
+    left:2px;
+ 
+    font-family: "Times New Roman", Georgia, Serif;
+    font-size: 200%;
+    margin-top: 60px;
+}
+#temperatureLabel{
+    position: relative;
+    margin-top: 40px;
+    font-size: 150%;
+    display: block;
+    text-align: center;
+    line-height: 150%;
+}
+
+
+

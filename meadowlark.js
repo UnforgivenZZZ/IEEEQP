@@ -11,6 +11,24 @@ var express = require('express');
 var app = express();
 var os = require('os');
 
+
+var sqlite3 = require('sqlite3').verbose();
+var db = new sqlite3.Database('./home.db');
+//intiallize database
+db.serialize(function() {
+
+  db.run("CREATE TABLE if not exists user_info (id varchar(15) PRIMARY KEY, pin varchar(10) NOT NULL)");
+  var sql = "SELECT id, pin FROM user_info WHERE id = \"Admin\" AND pin = \"1234\"";
+  db.each(sql, function(err, row) {
+      console.log(row.id + ": " + row.pin);
+  }, function(err, rows){
+  		if(rows==0){
+  			db.run("insert into user_info VALUES('Admin','1234')");
+  		}
+  });
+});
+
+
 function getVisitIP(){
 	var interfaces = os.networkInterfaces();
 	var addresses = [];
@@ -100,12 +118,12 @@ var timer;
 var is_connected = false;
 //random data
 function send_duration(){
-	var randomFortune = 
-	fortunes[Math.floor(Math.random() * fortunes.length)];
-	io.sockets.emit('temp',randomFortune);
+	var x = Math.floor((Math.random() * (21-20+1)) + 20);
+	x = ((x + Math.random()).toFixed(3)).toString() + " C";
+	io.sockets.emit('temp',x);
 
-    console.log(randomFortune);
-	return randomFortune;
+    console.log(x);
+	return x;
 }
 
 
@@ -132,7 +150,6 @@ io.sockets.on('connection', function (socket) {
    	console.log('disconnected');
    });
 });
-
 
 
 
